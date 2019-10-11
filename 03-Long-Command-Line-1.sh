@@ -11,6 +11,6 @@ run ./$SHELL_NAME < "${TEST_DIR}/scripts/too-long.sh" 2> /dev/null
 
 run ./$SHELL_NAME < "${TEST_DIR}/scripts/long.sh"
 
-compare <(echo "${expected}") <(echo "${actual}")
+compare <(echo "${reference_output}") <(echo "${program_output}")
 
 test_end

@@ -3,29 +3,24 @@ source "${TEST_DIR}/funcs.bash"
 run_timeout=5
 
 script=$(cat <<EOM
-
-/bin/echo System Information
-/bin/echo ------------------
-/bin/echo -n Hostname: 
-cat /proc/sys/kernel/hostname
-echo -n Kernel Version: 
-cat /proc/sys/kernel/osrelease
-echo Logged in Users:
-who
- 
+echo #Here's a comment
+echo # Here's another
+        # And another one! ####
+echo Line 1 # This better not display
+echo Line 2 #There's nothing here! #  echo No way
+##################
 EOM
 )
 
 reference_run sh <(echo "${script}") 2> /dev/null
 
-test_start "Basic process execution both from PATH and with absolute path"
+test_start "Comment support"
 
 # ---------- Test Script ----------
 echo "${script}"
 # -------------- End --------------
 
 run ./$SHELL_NAME < <(echo "${script}")
-
 compare <(echo "${reference_output}") <(echo "${program_output}")
 
 test_end

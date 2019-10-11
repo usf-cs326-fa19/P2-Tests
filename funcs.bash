@@ -51,12 +51,7 @@ test_end() {
     fi
 
     if [[ ${return} -ne 0 ]]; then
-        if [[ -n "${program_output}" ]]; then
-            echo " --> Test failed (${return})"
-            echo "Printing program output (limited to ${max_lines} lines):"
-            echo
-            head -n "${max_lines}" <<< "${program_output}"
-        fi
+        echo " --> Test failed (${return})"
     fi
 
     { trace_off; } 2> /dev/null

@@ -8,7 +8,7 @@ test_start "Scripting Support" \
 "process, so whitespace does matter here. If your shell times out, it "\
 "likely got stuck in a loop instead of exiting at the end of the script."
 
-run ./$SHELL_NAME < "${TEST_DIR}/scripts/inspector.sh" 2> /dev/null
+run ./$SHELL_NAME < "${TEST_DIR}/scripts/inspector.sh"
 compare <(echo "${reference_output}") <(echo "${program_output}")
 
 test_end
