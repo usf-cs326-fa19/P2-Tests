@@ -20,9 +20,16 @@ for num in ${@}; do
     run_tests="${run_tests}${test_file}"$'\n'
 done
 
+if [[ -z "${run_tests}" ]]; then
+    echo "Error: no tests to run."
+    exit 1
+fi
+
+num_commits=$(git -C "${TEST_DIR}" rev-list HEAD --count)
+
 points=0
 total_points=0
-echo "Running Tests:"
+echo "Running Tests: (v${num_commits})"
 for test in ${run_tests}; do
     test_file_name=$(basename "${test}")
     test_num="${test_file_name%%-*}"
@@ -32,6 +39,10 @@ for test in ${run_tests}; do
     test_name="${test_name:3}"
     test_name="${test_name//-/ }"
     printf " * %s %-20s [%s pts]" "${test_num}" "${test_name:0:20}" "${test_pts}"
+    if [[ ! -x "${test}" ]]; then
+        echo "  [NoExec]"
+        continue
+    fi
     ${test}
     if [[ $? -ne 0 ]]; then
         echo "  [ FAIL ]"
