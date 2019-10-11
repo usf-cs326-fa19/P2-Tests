@@ -21,6 +21,7 @@ echo "${script}"
 # -------------- End --------------
 
 run ./$SHELL_NAME < <(echo "${script}")
-compare <(echo "${reference_output}") <(echo "${program_output}")
+
+compare_outputs
 
 test_end

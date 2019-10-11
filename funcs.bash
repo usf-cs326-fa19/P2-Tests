@@ -111,6 +111,10 @@ draw_sep() {
     echo
 }
 
+compare_outputs() {
+    compare <(echo "${reference_output}") <(echo "${program_output}")
+}
+
 compare() {
     echo
     local term_sz="$(tput cols)"
