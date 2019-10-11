@@ -7,7 +7,7 @@ test_name="${test_name##*-}"
 in_test=false
 program_output=""
 filtered_output=""
-expected_output=""
+reference_output=""
 run_timeout=0
 max_lines=1000
 
@@ -84,8 +84,8 @@ run() {
     fi
 }
 
-expected_run() {
-    expected_output=$(${@})
+reference_run() {
+    reference_output=$(${@})
     return $?
 }
 
