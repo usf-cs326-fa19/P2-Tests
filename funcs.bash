@@ -65,7 +65,7 @@ trace_off() {
 }
 
 run() {
-    program_output=$(${@})
+    program_output=$(timeout ${run_timeout} ${@})
     program_return=$?
 
     if [[ "${program_return}" -ne 0 ]]; then
