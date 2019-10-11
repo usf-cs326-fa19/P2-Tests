@@ -9,6 +9,7 @@ program_output=""
 filtered_output=""
 expected_output=""
 run_timeout=0
+max_lines=1000
 
 exec &> "${TEST_DIR}/test.${test_num}.md"
 
@@ -42,11 +43,19 @@ test_end() {
         echo
     fi
 
+    if [[ "${return}" -eq 124 ]]; then
+        echo '--------------------------------------------'
+        echo " --> ERROR: program timed out (${run_timeout}s) "
+        echo '--------------------------------------------'
+        echo
+    fi
+
     if [[ ${return} -ne 0 ]]; then
         if [[ -n "${program_output}" ]]; then
-            echo ' --> Test failed, printing last full program output:'
+            echo " --> Test failed (${return})"
+            echo "Printing program output (limited to ${max_lines} lines):"
             echo
-            echo "${program_output}"
+            head -n "${max_lines}" <<< "${program_output}"
         fi
     fi
 
