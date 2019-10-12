@@ -3,7 +3,10 @@ source "${TEST_DIR}/funcs.bash"
 run_timeout=5
 
 script=$(cat <<EOM
-
+oewiofjweoiwje
+owfjeiowej
+owjefiowejfiwoeewoijwio
+ojwfe
 /bin/echo System Information
 /bin/echo ------------------
 /bin/echo -n Hostname: 
@@ -12,7 +15,6 @@ echo -n Kernel Version:
 cat /proc/sys/kernel/osrelease
 echo Logged in Users:
 who
- 
 EOM
 )
 
