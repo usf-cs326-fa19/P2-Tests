@@ -1,5 +1,7 @@
 source "${TEST_DIR}/funcs.bash"
 
+run_timeout=5
+
 script=$(cat <<EOM
 setenv shell_test_variable_1 This-is-a-really-long-environment-variable-value
 setenv lions
