@@ -9,6 +9,6 @@ test_start "History List"
 
 run ./$SHELL_NAME < "${TEST_DIR}/scripts/history-script-1.sh"
 
-compare_outputs
+compare_outputs --ignore-all-space
 
 test_end

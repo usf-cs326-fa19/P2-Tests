@@ -18,6 +18,7 @@ expected_output=$(cat <<EOM
 This-is-a-really-long-environment-variable-value
 Tigers
 Toitles
+
 Test Complete
 EOM
 )

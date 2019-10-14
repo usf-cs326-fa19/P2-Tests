@@ -112,7 +112,7 @@ draw_sep() {
 }
 
 compare_outputs() {
-    compare <(echo "${reference_output}") <(echo "${program_output}")
+    compare ${@} <(echo "${reference_output}") <(echo "${program_output}")
 }
 
 compare() {
