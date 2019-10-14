@@ -1,5 +1,5 @@
 source "${TEST_DIR}/funcs.bash"
-run_timeout=2
+run_timeout=5
 
 reference_run sh < "${TEST_DIR}/scripts/inspector.sh" 2> /dev/null
 
@@ -9,6 +9,11 @@ test_start "Scripting Support" \
 "likely got stuck in a loop instead of exiting at the end of the script."
 
 run ./$SHELL_NAME < "${TEST_DIR}/scripts/inspector.sh"
-compare <(echo "${reference_output}") <(echo "${program_output}")
+
+compare_outputs || test_end 1
+
+# This will often cause an infinite loop if scripting isn't implemented
+# correctly (specifically if child fds are left open)
+run ./$SHELL_NAME < "${TEST_DIR}/scripts/leak.sh"
 
 test_end
