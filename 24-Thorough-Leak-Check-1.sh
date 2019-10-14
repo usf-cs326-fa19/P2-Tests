@@ -1,5 +1,7 @@
 source "${TEST_DIR}/funcs.bash"
 
+run_timeout=30
+
 test_start "Thorough Memory Leak Check"
 
 valgrind --trace-children=no --leak-check=full \

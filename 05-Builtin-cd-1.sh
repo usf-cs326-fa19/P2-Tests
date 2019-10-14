@@ -24,7 +24,7 @@ test_start "'cd' built-in command"
 echo "${script}"
 # -------------- End --------------
 
-./$SHELL_NAME < <(echo "${script}")
+run ./$SHELL_NAME < <(echo "${script}")
 
 compare_outputs
 
