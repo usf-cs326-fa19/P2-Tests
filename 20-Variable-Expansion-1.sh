@@ -15,8 +15,8 @@ echo Running the command in VARCMD:
 $VARCMD
 echo
 echo TESTVAR is: $TESTVAR
-echo Number of args passed to echo:
-$NUMARGS $TESTVAR
+#echo Number of args passed to echo:
+#$NUMARGS $TESTVAR
 echo Listing LSVAR: $LSVAR ...
 ls $LSVAR
 EOM
