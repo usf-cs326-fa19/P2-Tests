@@ -1,0 +1,2 @@
+Background jobs seems to be able to hang even with the timeout? Related to waitpid without WNOBLOCK
+No tests for < 100 history entries
